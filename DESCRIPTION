@@ -12,3 +12,6 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    flextable,
+    officer
