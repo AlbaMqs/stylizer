@@ -1,0 +1,14 @@
+Package: stylizer
+Title: StylizeR
+Version: 0.0.0.9000
+Authors@R: 
+    person("Alba", "Maiques", , "maiques@hotmail.fr", role = c("aut", "cre"))
+Description: R package facilitating table formatting for Word.
+License: CC0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
