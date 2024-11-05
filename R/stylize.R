@@ -30,23 +30,23 @@ stylize <- function(data,
   ft <- flextable(data)
 
   # Application du thème
-  # if(theme == "classic"){
-  #
-  # }
+  if(theme == "classy"){
+    ft <- theme_classy(ft)
+  }
 
   return(ft)
 }
 # Create a small dataset
-example_data <- data.frame(
-  Name = c("Alice", "Bob", "Charlie"),
-  Age = c(25, 30, 35),
-  Profession = c("Engineer", "Doctor", "Teacher")
-)
-
-example_ft <- example_data |>
-  stylize()
-
-example_ft
+# example_data <- data.frame(
+#   Name = c("Alice", "Bob", "Charlie"),
+#   Age = c(25, 30, 35),
+#   Profession = c("Engineer", "Doctor", "Teacher")
+# )
+#
+# example_ft <- example_data |>
+#   stylize()
+#
+# example_ft
 
 
 #
