@@ -24,5 +24,6 @@ Imports:
     tibble,
     tidyr,
     purrr,
-    stringr
+    stringr,
+    utils
 Config/testthat/edition: 3
