@@ -1,4 +1,4 @@
-#' tab_contingency
+#' tab_contingency_grouped
 #'
 #' Generates a contingency table with grouped columns
 #'

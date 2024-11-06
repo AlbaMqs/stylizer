@@ -88,7 +88,9 @@ tab_contingency <- function(df, x, y,
     dplyr::filter(!is.na(!!rlang::enquo(x)))
 
   # Step 3: Display counts per column if specified
-  df <- tab_utils_display_ncol(df, !!rlang::enquo(y), n.col)
+  if(n.col){
+    df <- tab_utils_display_ncol(df, df_init, !!rlang::enquo(y))
+  }
 
   # Step 4: Create contingency table
   df <- tab_utils_create_contigency_table(df, !!rlang::enquo(x), !!rlang::enquo(y))

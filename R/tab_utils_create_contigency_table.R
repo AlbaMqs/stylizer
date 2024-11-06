@@ -13,7 +13,7 @@
 #' @keywords internal
 tab_utils_create_contigency_table <- function(df, x, y) {
   df <- df |>
-    dplyr::count(!!rlang::enquo(x), !!rlang::enquo(y), .drop = FALSE) |>
+    dplyr::count(!!rlang::enquo(x), !!rlang::enquo(y)) |>
     tidyr::pivot_wider(
       names_from = rlang::as_name(rlang::enquo(y)),
       values_from = n,
