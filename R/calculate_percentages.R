@@ -4,6 +4,7 @@
 #'
 #' @param df A dataframe with counts.
 #' @param out Output type: "obf" for obfuscation, "pct" for standard percentage.
+#' @import dplyr
 #'
 #' @return A dataframe with percentages.
 #' @keywords internal

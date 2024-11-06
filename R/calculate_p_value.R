@@ -4,6 +4,9 @@
 #'
 #' @param df A contingency table in wide format.
 #' @param test The statistical test to use ("chi2" or "fisher").
+#' @import dplyr
+#' @import stats
+#' @importFrom tibble column_to_rownames
 #'
 #' @return A dataframe with the p-value added as a column.
 #' @keywords internal

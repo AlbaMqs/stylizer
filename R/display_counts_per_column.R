@@ -5,6 +5,8 @@
 #' @param df A dataframe with categorical data.
 #' @param y The column variable.
 #' @param n.col Logical, if `TRUE`, display counts per column.
+#' @import dplyr
+#' @importFrom rlang enquo
 #'
 #' @return A dataframe with counts per column level in `y`.
 #' @keywords internal

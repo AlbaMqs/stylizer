@@ -5,6 +5,9 @@
 #' @param df A dataframe with categorical data.
 #' @param x The row variable.
 #' @param y The column variable.
+#' @import dplyr
+#' @importFrom rlang enquo
+#' @importFrom tidyr pivot_wider
 #'
 #' @return A contingency table in wide format.
 #' @keywords internal

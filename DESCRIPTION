@@ -22,5 +22,7 @@ Imports:
     rlang,
     stats,
     tibble,
-    tidyr
+    tidyr,
+    purrr,
+    stringr
 Config/testthat/edition: 3
