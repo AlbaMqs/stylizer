@@ -18,7 +18,8 @@ tab_utils_display_ncol <- function(df, df_init, y) {
   name <- df_init |>
     dplyr::count(!!y, name = 'name') |>
     dplyr::filter(!is.na(!!y)) |>
-    dplyr::mutate(name = paste0(!!y, "\nN=", name))
+    dplyr::mutate(name = paste0(!!y, "\nN=", name),
+                  !!y := as.factor(!!y))
 
   # Effectuer une jointure pour remplacer la colonne `y` dans `df`
   df <- df |>

@@ -25,5 +25,6 @@ Imports:
     tidyr,
     purrr,
     stringr,
-    utils
+    utils,
+    tidyselect
 Config/testthat/edition: 3

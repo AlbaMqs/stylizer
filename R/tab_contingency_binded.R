@@ -29,11 +29,12 @@
 #' @export
 #'
 #' @examples
+#' warpbreaks$breaks <- warpbreaks$breaks > 20
 #' # Example 1: Bind contingency tables without column grouping
 #' tab_contingency_binded(warpbreaks, wool, tension, y = breaks, test = "chi2")
 #'
 #' # Example 2: Bind contingency tables with grouped columns (grouping sizes 2 and 1)
-#' tab_contingency_binded(warpbreaks, wool, tension, y = breaks, p_group = c(2, 1), na.use = "as.note")
+#' tab_contingency_binded(warpbreaks, wool, breaks, y = tension, p_group = c(2, 1), na.use = "as.note")
 #'
 #' # Note: For additional parameter information, see ?tab_contingency or ?tab_contingency_grouped.
 
@@ -49,7 +50,7 @@ tab_contingency_binded <- function(df, ..., y, p_group = NULL,
 
   # Appliquer la fonction de contingence appropriée
   if (is.null(p_group)) {
-    list_tables <- purrr::map(vars, ~ tab_contingency(df, !!.x, {{y}}, n.col = FALSE, na.use, test, out,
+    list_tables <- purrr::map(vars, ~ tab_contingency(df, !!.x, {{y}}, n.col, na.use, test, out,
                                                       inline.title = TRUE, label.title, lang))
   } else {
     list_tables <- purrr::map(vars, ~ tab_contingency_grouped(df, !!.x, {{y}}, p_group = p_group,
