@@ -72,7 +72,3 @@ theme_classy <- function(ft) {
 
   return(ft)
 }
-
-ft <- flextable(head(iris))  # Create a simple flextable
-styled_ft <- theme_classy(ft)  # Apply the classy theme to the flextable
-styled_ft
