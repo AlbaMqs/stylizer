@@ -10,7 +10,6 @@
 #' @param pos.value Value of ... to consider as the positive value.
 #' @param n.col Display count per column.
 #' @param na.use Mode of displaying missing values:
-#'   - "as.cat": As a regular category.
 #'   - "as.note": As a note readable by stylization functions.
 #'   - "no": Do not display missing values.
 #' @param test Statistical test used:
@@ -28,6 +27,7 @@
 #' @import rlang
 #' @importFrom dplyr bind_rows
 #' @importFrom purrr map
+#' @importFrom stringr str_extract str_remove
 #' @export
 #'
 #' @examples
@@ -50,16 +50,28 @@ tab_contingency_yn_binded <- function(df, ..., y, p_group = NULL, title, pos.val
                              label.title = TRUE,
                              lang = Sys.getlocale("LC_CTYPE")){
   vars <- quos(...)
-
+  # Step 1: Create contingency tables
   list_tables <- map(vars, ~ tab_contingency_yn(df, !!.x, {{y}}, p_group = p_group, pos.value,
                                          n.col, na.use, test, out,
                                          inline.title = TRUE, label.title, lang))
 
+  # Step 2: Bind all table to get one bigger
   result <- bind_rows(list_tables)
 
-  # missing <- get_missing(result)
-  # result <- remove_missing(result)
-  # title <- paste0(title, "<nonadd><missing:", missing, ">")
+  # Step 3: Handle missing value
+  if(na.use == "as.note"){
+    na_count <- result$Variable |>
+      stringr:::str_extract("(?<=missing\\:)\\d+") |>
+      as.numeric() |>
+      sum()
+
+    title <- paste0(title, "<missing:", na_count, ">")
+
+    result$Variable <- result$Variable |>
+      stringr:::str_remove("<missing\\:\\d+>")
+  }
+
+  title <- paste0(title, "<nonadd>")
 
   result <- bind_rows(tibble(!!!setNames(c(title, rep(NA, ncol(result) - 1)),
                                          names(result))), result)
