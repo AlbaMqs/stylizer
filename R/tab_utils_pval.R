@@ -26,6 +26,11 @@ tab_utils_pval <- function(df, test) {
   }
   df <- df |>
     dplyr::mutate(p_value = c(p_value, rep(NA, nrow(df) - 1)))
+
+  df <- df |>
+    dplyr::mutate(p_value = ifelse(dplyr::if_any(dplyr::where(is.numeric), ~ . < 5),
+                                   "\u2014",
+                                   p_value))
   return(df)
 }
 

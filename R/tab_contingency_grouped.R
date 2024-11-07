@@ -70,6 +70,7 @@ tab_contingency_grouped <- function(df, x, y, p_group,
   # Step 1: Split columns by group
   list_col <- df |>
     dplyr::pull({{y}}) |>
+    as.factor() |>
     levels() |>
     tab_utils_split_col(p_group)
 

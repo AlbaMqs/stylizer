@@ -2,7 +2,7 @@
 % Please edit documentation in R/tab_contingency_grouped.R
 \name{tab_contingency_grouped}
 \alias{tab_contingency_grouped}
-\title{tab_contingency}
+\title{tab_contingency_grouped}
 \usage{
 tab_contingency_grouped(
   df,

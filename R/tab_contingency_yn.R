@@ -49,25 +49,26 @@ tab_contingency_yn <- function(df, x, y, p_group = NULL, pos.value = TRUE,
                         label.title = TRUE,
                         lang = Sys.getlocale("LC_CTYPE")){
 
-  # Step 1: Classic contingence table
+  # Step 1: Get missing
+  if(na.use == "as.note"){
+    na_count <- df |>
+      filter(is.na({{y}})) |>
+      nrow()
+  }
+  else{
+    na_count <- NA
+  }
+
+  # Step 2: Classic contingence table
   if(is.null(p_group)){
     df <- df |>
-      mutate(!!enquo(x) := as.factor(!!enquo(x))) |>
-      tab_contingency({{x}}, {{y}}, n.col, na.use, test, out, inline.title=F, label.title=F, lang)
+      mutate(!!enquo(x) := as.character(!!enquo(x))) |>
+      tab_contingency({{x}}, {{y}}, n.col = n.col, na.use = "no", test = test, out = out, inline.title=F, label.title=F, lang = lang)
   }
   else{
     df <- df |>
-      mutate(!!enquo(x) := as.factor(!!enquo(x))) |>
-      tab_contingency_grouped({{x}}, {{y}}, p_group, n.col, na.use, test, out, inline.title=F, label.title=F, lang)
-  }
-
-  # Step 2: Get missing
-  if(na.use == "as.note"){
-    na_count <- names(df)[1] |>
-    stringr::str_extract("<missing:\\d+>")
-
-    names(df)[1] <- names(df)[1] |>
-      stringr::str_remove_all("<missing:\\d+>")
+      mutate(!!enquo(x) := as.character(!!enquo(x))) |>
+      tab_contingency_grouped({{x}}, {{y}}, p_group, n.col = n.col, na.use = "no", test = test, out = out, inline.title=F, label.title=F, lang = lang)
   }
 
   # Step 3: Get p value

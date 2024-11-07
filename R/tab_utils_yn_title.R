@@ -7,7 +7,7 @@
 #' @param df The dataframe containing the contingency table.
 #' @param x The variable for which to generate a title.
 #' @param label.title Logical; if \code{TRUE}, replace the row variable title with its label if available.
-#' @param na_count A string indicating the missing value count in the format "<missing:n>" to append to the title.
+#' @param na_count A string indicating the missing value count to append to the title.
 #' @param inline.title Logical; if \code{TRUE}, places the title inline within the table instead of as the column name.
 #'
 #' @return The dataframe with the title appropriately set as the column name or inline.
@@ -24,7 +24,7 @@ tab_utils_yn_title <- function(df, x, label.title = TRUE, na_count = NULL, inlin
 
   # Append missing values note if `na_count` is provided
   if (!is.null(na_count) & !is.na(na_count)) {
-    title <- paste0(title, na_count)
+    title <- paste0(title, "<missing:", na_count, ">")
   }
 
   # Apply title inline or as column name

@@ -104,6 +104,10 @@ tab_contingency <- function(df, x, y,
   if (out != "n") {
     df <- tab_utils_percent(df, out)
   }
+  else{
+    df <- df |>
+      dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+  }
 
   # Step 7: Add inline title if required
   df <- tab_utils_add_inline_title(df, !!rlang::enquo(x), df_init, inline.title, label.title, na_count)

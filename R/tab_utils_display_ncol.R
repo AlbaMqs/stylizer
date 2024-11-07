@@ -3,8 +3,9 @@
 #' Adds count information for each level of `y` if `n.col` is `TRUE`.
 #'
 #' @param df A dataframe with categorical data.
+#' @param df_init The initial dataframe.
 #' @param y The column variable.
-#' @param n.col Logical, if `TRUE`, display counts per column.
+#'
 #' @import dplyr
 #' @importFrom rlang enquo as_name
 #'

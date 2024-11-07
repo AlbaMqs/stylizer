@@ -7,6 +7,7 @@
 #' @param y The column variable.
 #' @param p_group An integer vector representing the width of each column group. If \code{NULL}, columns are not grouped.
 #' @param title A title row added at the top of the final combined table.
+#' @param pos.value Value of ... to consider as the positive value.
 #' @param n.col Display count per column.
 #' @param na.use Mode of displaying missing values:
 #'   - "as.cat": As a regular category.
@@ -32,11 +33,12 @@
 #' @examples
 #' warpbreaks$breaks <- ifelse(warpbreaks$breaks > 20, "A", "B")
 #' # Example 1: Combine contingency tables without column grouping
-#' tab_contingency_yn_binded(warpbreaks, breaks, wool, y = tension, title = "Combined Wool and Tension Table", pos.value = "A")
+#' tab_contingency_yn_binded(warpbreaks, breaks, wool, y = tension,
+#'                           title = "Combined Wool and Tension Table", pos.value = "A")
 #'
-#' # Example 2: Combine contingency tables with grouped columns, specifying a title and Chi-square test
-#' tab_contingency_yn_binded(warpbreaks, wool, tension, y = breaks, p_group = c(2, 1),
-#'                  title = "Grouped Wool and Tension Table", test = "chi2")
+#' # Example 2: Combine contingency tables with grouped columns
+#' tab_contingency_yn_binded(warpbreaks, breaks, wool, y = tension, p_group = c(2,1),
+#'                           title = "Combined Wool and Tension Table", pos.value = "A")
 #'
 #' # Note: Refer to ?tab_prop_yn for additional parameter details.
 

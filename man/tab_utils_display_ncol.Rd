@@ -4,14 +4,14 @@
 \alias{tab_utils_display_ncol}
 \title{Display Counts per Column}
 \usage{
-tab_utils_display_ncol(df, y, n.col)
+tab_utils_display_ncol(df, df_init, y)
 }
 \arguments{
 \item{df}{A dataframe with categorical data.}
 
-\item{y}{The column variable.}
+\item{df_init}{The initial dataframe.}
 
-\item{n.col}{Logical, if \code{TRUE}, display counts per column.}
+\item{y}{The column variable.}
 }
 \value{
 A dataframe with counts per column level in \code{y}.
