@@ -87,7 +87,7 @@ tab_contingency_grouped <- function(df, x, y, p_group,
   if(test != "none"){
     df_list <- lapply(seq_along(df_list), function(i) {
       df_list[[i]] |>
-        dplyr::rename(!!paste0("p_value_", i) := .data$p_value)
+        dplyr::rename(!!paste0("p_value_", i) := p_value)
     })
   }
 

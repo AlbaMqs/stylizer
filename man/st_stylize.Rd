@@ -2,34 +2,43 @@
 % Please edit documentation in R/st_stylize.R
 \name{st_stylize}
 \alias{st_stylize}
-\title{Stylize}
+\title{Stylize a Flextable for Improved Readability and Structure}
 \usage{
-st_stylize(data, theme = "classy")
+st_stylize(
+  data,
+  theme = "classy",
+  group = NULL,
+  lang = Sys.getlocale("LC_CTYPE")
+)
 }
 \arguments{
 \item{data}{A table or dataframe to be formatted.}
 
-\item{theme}{Flextable theme you want to use}
+\item{theme}{The flextable theme to apply. Default is \code{"classy"}.}
+
+\item{group}{Grouping level indicator. Leave \code{NULL} for single-level grouping; set to \code{2} for multi-level.}
+
+\item{lang}{Language for table content and footnotes. Accepts \code{"en"} for English or \code{"fr"} for French.}
 }
 \value{
-A Flextable object ready to be printed in your Word document.
+A stylized flextable object, ready for printing or exporting to Word.
 }
 \description{
-Handles the table layout by organizing its structure, formatting cells, and aligning content for optimal readability.
+Formats and enhances the layout of a flextable by structuring content, formatting cells, and adding footnotes
+as needed for optimal readability. This function can handle missing data, non-additive categories, and other
+specific notes in multiple languages.
 }
 \examples{
 # Example of using the st_stylize function
 
-# Create a small dataset
-example_data <- data.frame(
-  Name = c("Alice", "Bob", "Charlie"),
-  Age = c(25, 30, 35),
-  Profession = c("Engineer", "Doctor", "Teacher")
-)
+# Example 1: Applying st_stylize to a contingency table
+tab_contingency_binded(warpbreaks, wool, breaks, y = tension, p_group = c(2, 1), na.use = "as.note") |>
+st_stylize()
 
-# Apply the st_stylize function to the dataset
-st_stylized_table <- st_stylize(example_data)
-
-# Display the result (here, st_stylized_table is the formatted Flextable object)
-print(st_stylized_table)
+# Example 2: Applying st_stylize with a custom note and grouped p-values
+warpbreaks |>
+dplyr::rename(`wool<note:A simple note>` = wool) |>
+tab_contingency_yn_binded(breaks, `wool<note:A simple note>`, y = tension, p_group = c(2,1),
+                          title = "Combined Wool and Tension Table", pos.value = "A") |>
+st_stylize(lang = "fr")
 }

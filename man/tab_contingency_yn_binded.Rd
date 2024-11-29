@@ -36,7 +36,6 @@ tab_contingency_yn_binded(
 
 \item{na.use}{Mode of displaying missing values:
 \itemize{
-\item "as.cat": As a regular category.
 \item "as.note": As a note readable by stylization functions.
 \item "no": Do not display missing values.
 }}

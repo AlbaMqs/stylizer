@@ -6,6 +6,7 @@
 \usage{
 tab_utils_yn_title(
   df,
+  df_init,
   x,
   label.title = TRUE,
   na_count = NULL,
@@ -14,6 +15,8 @@ tab_utils_yn_title(
 }
 \arguments{
 \item{df}{The dataframe containing the contingency table.}
+
+\item{df_init}{The initial dataframe.}
 
 \item{x}{The variable for which to generate a title.}
 

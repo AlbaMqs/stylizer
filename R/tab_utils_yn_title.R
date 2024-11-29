@@ -5,6 +5,7 @@
 #' It also handles inline title placement or column name replacement.
 #'
 #' @param df The dataframe containing the contingency table.
+#' @param df_init The initial dataframe.
 #' @param x The variable for which to generate a title.
 #' @param label.title Logical; if \code{TRUE}, replace the row variable title with its label if available.
 #' @param na_count A string indicating the missing value count to append to the title.
@@ -14,10 +15,10 @@
 #' @importFrom labelled var_label
 #' @importFrom dplyr mutate
 #' @keywords internal
-tab_utils_yn_title <- function(df, x, label.title = TRUE, na_count = NULL, inline.title = FALSE) {
+tab_utils_yn_title <- function(df, df_init, x, label.title = TRUE, na_count = NULL, inline.title = FALSE) {
   # Retrieve the label if `label.title` is TRUE, else use variable name
   title <- if (label.title) {
-    labelled::var_label(df[[rlang::as_name(rlang::enquo(x))]]) %||% rlang::as_name(rlang::enquo(x))
+    labelled::var_label(df_init[[rlang::as_name(rlang::enquo(x))]]) %||% rlang::as_name(rlang::enquo(x))
   } else {
     rlang::as_name(rlang::enquo(x))
   }

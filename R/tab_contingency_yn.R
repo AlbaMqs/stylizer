@@ -48,7 +48,7 @@ tab_contingency_yn <- function(df, x, y, p_group = NULL, pos.value = TRUE,
                         inline.title = FALSE,
                         label.title = TRUE,
                         lang = Sys.getlocale("LC_CTYPE")){
-
+  df_init <- df
   # Step 1: Get missing
   if(na.use == "as.note"){
     na_count <- df |>
@@ -83,7 +83,7 @@ tab_contingency_yn <- function(df, x, y, p_group = NULL, pos.value = TRUE,
     filter(!!enquo(x) == pos.value)
 
   # Step 5: Add title
-  df <- tab_utils_yn_title(df, x = {{x}}, label.title = label.title, na_count = na_count, inline.title = inline.title)
+  df <- tab_utils_yn_title(df, df_init, x = {{x}}, label.title = label.title, na_count = na_count, inline.title = inline.title)
 
   return(df)
 }

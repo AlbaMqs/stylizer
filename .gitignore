@@ -1,4 +1,5 @@
 inst/doc
+^loader.R$
 
 # History files
 .Rhistory

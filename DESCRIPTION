@@ -1,6 +1,6 @@
 Package: stylizer
 Title: StylizeR
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Alba", "Maiques", , "maiques@hotmail.fr", role = c("aut", "cre"))
 Description: R package facilitating table formatting for Word.
